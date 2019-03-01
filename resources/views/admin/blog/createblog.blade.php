@@ -8,25 +8,14 @@
             <div class="card-header">Create Post</div>
 
             <div class="card-body">
-                <h3>Your Listings</h3>
-                @if(count($blogs))
-                <table class="table table-striped">
-                    <tr>
-                        <th>{{__('Pavadinimas')}}</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    @foreach($blogs as $blog)
-                        <tr>
-                        <td>{{$blog->pavadinimas}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        </tr>
-                    @endforeach
-                </table>
-                @endif
+                {!! Form::open(['action' => 'BlogsController@store', 'method' => 'POST']) !!}
+                    {{ Form::bsText('pavadinimas', '', ['placeholder' => 'Pavadinimas']) }}
+                    {{ Form::bsText('SEO', '', ['placeholder' => 'Žymos pagal kurias randamas įrašas']) }}
+                    {{ Form::bsTextarea('Trumpas_aprašymas', '', ['placeholder' => 'Trumas aprašymas']) }}
+                    {{ Form::bsTextarea('Aprašymas', '', ['placeholder' => 'Aprašymas']) }}
+                    {{ Form::bsSelect('Patalpinti_kategorijoje', ['1' => 'Lankytinos vietos', '2' => 'Maršrutai',], '1', ['placeholder' => 'Pasirinkite kategoriją...']) }}
+                    {{ Form::bsSubmit('Įvesti', ['class'=>'btn btn-success']) }}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

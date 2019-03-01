@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
+use App\User;
 
 class BlogsController extends Controller
 {
@@ -13,7 +15,11 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->user()->id;
+
+        $user = User::find($user_id);
+
+        return view('admin.blog.blog')->with('blogs', $user->blogs);
     }
 
     /**
@@ -34,7 +40,27 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'pavadinimas' => 'required',
+            'Aprašymas' => 'required',
+        ]);
+
+        //Create blog post
+        $blog = new Blog;
+
+        $blog->user_id = auth()->user()->id;
+        $blog->pavadinimas = $request->input('pavadinimas');
+        $blog->seo = $request->input('SEO');
+        $blog->tr_aprasymas = $request->input('Trumpas_aprašymas');
+        $blog->aprasymas = $request->input('Aprašymas');
+        $blog->kategory_id = $request->input('Patalpinti_kategorijoje');
+        $blog->pavadinimas = $request->input('pavadinimas');
+        $blog->patinka = 0;
+        $blog->perziuros = 0;
+
+        $blog->save();
+
+        return redirect('/dashboard')->with('success', 'Listing Added');
     }
 
     /**

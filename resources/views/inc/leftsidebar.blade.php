@@ -24,14 +24,23 @@
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button class="btn btn-link collapsed text-dark" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            {{ __('Blogas')}}
+                        <a href="/dashboard" class="btn btn-link collapsed text-dark" role="button">
+                            {{ __('Valdymo skydas')}}
+                        </a>
+                    </h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button href="/blog" class="btn btn-link collapsed text-dark mask" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a href="/blog" class="btn btn-link collapsed text-dark" role="button">{{ __('Blogas')}}</a>
                         </button>
                     </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <a class="btn btn-light" href="#" role="button">{{__('Pridėti')}}</a>
+                        <a class="btn btn-light" href="/blog/create" role="button">{{__('Pridėti')}}</a>
                         <a class="btn btn-light" href="#" role="button">{{__('Redaguoti')}}</a>
                         <a class="btn btn-light" href="#" role="button">{{__('Ištrinta')}}</a>
                     </div>
