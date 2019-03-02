@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BlogsController@home');
+Route::get('/blog', 'BlogsController@home');
 
 Auth::routes();
-Route::resource('blog', 'BlogsController');
+Route::resource('admin/blog', 'BlogsController');
 
 Route::get('/dashboard', 'DashboardController@index');

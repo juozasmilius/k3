@@ -4,22 +4,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header h3"><strong>{{__('Blogas')}}</strong></div>
 
                 <div class="card-body">
-                    <h3>{{__('Jūsų sukurti įrašai')}}</h3>
                     @if(count($blogs))
-                    <table class="table table-striped">
+                    <table class="table table-striped border">
                         <tr>
-                            <th>{{__('Pavadinimas')}}</th>
-                            <th></th>
+                            <th class="w-100">{{__('Pavadinimas')}}</th>
                             <th></th>
                             <th></th>
                         </tr>
                         @foreach($blogs as $blog)
                             <tr>
                             <td>{{$blog->pavadinimas}}</td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             </tr>
