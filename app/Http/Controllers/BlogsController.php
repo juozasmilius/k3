@@ -8,6 +8,11 @@ use App\User;
 
 class BlogsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['home', 'show']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +84,8 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        //
+        $blog = Blog::find($id);
+        return view('user.blog.blog')->with('blog', $blog);
     }
 
     /**

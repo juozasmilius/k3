@@ -13,6 +13,8 @@
 
 Route::get('/', 'BlogsController@home');
 Route::get('/blog', 'BlogsController@home');
+Route::get('/blog/{blog}', 'BlogsController@show');
+
 
 Auth::routes();
 Route::resource('admin/blog', 'BlogsController');
